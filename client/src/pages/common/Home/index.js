@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
-import { message } from 'antd';
+import { message, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllExams } from '../../../apicalls/exams';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice';
 import PageTitle from '../../../components/PageTitle';
 import { useNavigate } from 'react-router-dom';
 
+const { Search } = Input;
+
 function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.users);
   const [exams, setExams] = React.useState([]);
+  const [filteredExams, setFilteredExams] = React.useState([]);
 
   const getExams = async () => {
     try {
@@ -18,6 +21,7 @@ function Home() {
       const response = await getAllExams();
       if (response.success) {
         setExams(response.data);
+        setFilteredExams(response.data);
       } else {
         message.error(response.message);
       }
@@ -26,6 +30,13 @@ function Home() {
       dispatch(HideLoading());
       message.error(error.message);
     }
+  };
+
+  const handleSearch = (value) => {
+    const filtered = exams.filter((exam) =>
+      exam.name.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredExams(filtered);
   };
 
   useEffect(() => {
@@ -58,8 +69,14 @@ function Home() {
         </button>
       </div>
       <div className="divider"></div>
+      <Search
+        placeholder="Search exams"
+        onSearch={handleSearch}
+        enterButton
+        className="mb-3"
+      />
       <div className="flex gap-5 flex-wrap mt-2">
-        {exams.map((exam) => (
+        {filteredExams.map((exam) => (
           <div
             className="card p-2 cursor-pointer"
             key={exam._id}

@@ -110,3 +110,142 @@
     padding: 8px 15px !important;
   }
 }
+
+/* Custom CSS styles for improved UI/UX */
+
+/* General layout styles */
+.layout {
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  gap: 10px;
+  color: white;
+  border-radius: 4px;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.active-menu-item {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+.body {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 20px;
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.header {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.header .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header .actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .layout {
+    padding: 10px;
+  }
+  
+  .sidebar {
+    padding: 10px;
+  }
+  
+  .menu-item {
+    padding: 8px 15px;
+    gap: 10px;
+  }
+  
+  .menu-item span {
+    display: none;
+  }
+
+  /* Show text on active menu item */
+  .active-menu-item span {
+    display: inline;
+  }
+  
+  /* Adjust quiz card layout for mobile */
+  .flex.gap-5.flex-wrap {
+    gap: 10px !important;
+    justify-content: center;
+  }
+  
+  /* Make cards full width on mobile */
+  .card.p-2 {
+    width: 100% !important;
+  }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 480px) {
+  .layout {
+    padding: 5px;
+  }
+
+  .sidebar {
+    padding: 5px;
+  }
+  
+  .menu-item {
+    padding: 6px 10px;
+    margin: 3px;
+    font-size: 0.9em;
+  }
+  
+  /* Compact layout for very small screens */
+  .w-400 {
+    width: 95% !important;
+    max-width: 400px;
+  }
+  
+  /* Fix form elements for small screens */
+  input, select, button {
+    padding: 8px 15px !important;
+  }
+}

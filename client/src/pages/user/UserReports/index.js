@@ -1,10 +1,13 @@
 import React, { useEffect, useCallback, useRef, useState } from "react";
 import PageTitle from "../../../components/PageTitle";
-import { message, Table, Button } from "antd";
+import { message, Table, Button, Input, Select } from "antd";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../../redux/loaderSlice";
 import { getAllReportsByUser } from "../../../apicalls/reports";
 import moment from "moment";
+
+const { Search } = Input;
+const { Option } = Select;
 
 function UserReports() {
   const [reportsData, setReportsData] = useState([]);
@@ -14,6 +17,8 @@ function UserReports() {
     pageSize: 10,
     total: 0
   });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filter, setFilter] = useState("all");
   const dispatch = useDispatch();
   const dataFetchedRef = useRef(false);
 
@@ -95,6 +100,20 @@ function UserReports() {
     getData(pagination.current, pagination.pageSize);
   };
 
+  const handleSearch = (value) => {
+    setSearchTerm(value);
+  };
+
+  const handleFilterChange = (value) => {
+    setFilter(value);
+  };
+
+  const filteredReports = reportsData.filter((report) => {
+    const matchesSearchTerm = report.exam.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filter === "all" || report.result.verdict === filter;
+    return matchesSearchTerm && matchesFilter;
+  });
+
   useEffect(() => {
     if (!dataFetchedRef.current) {
       dataFetchedRef.current = true;
@@ -119,11 +138,26 @@ function UserReports() {
         >
           Refresh
         </Button>
+        <Search
+          placeholder="Search by exam name"
+          onSearch={handleSearch}
+          enterButton
+          className="search-input"
+        />
+        <Select
+          value={filter}
+          onChange={handleFilterChange}
+          className="filter-select"
+        >
+          <Option value="all">All</Option>
+          <Option value="Pass">Pass</Option>
+          <Option value="Fail">Fail</Option>
+        </Select>
       </div>
 
       <Table 
         columns={columns} 
-        dataSource={reportsData} 
+        dataSource={filteredReports} 
         rowKey="_id"
         loading={loading}
         pagination={pagination}
