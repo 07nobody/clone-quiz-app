@@ -102,3 +102,76 @@
 .mt-2{
     margin-top: 20px;
 }
+
+/* Responsive design classes */
+@media screen and (max-width: 768px) {
+  .h-screen {
+    height: auto;
+  }
+  .w-screen {
+    width: 100%;
+  }
+  .w-400 {
+    width: 100%;
+  }
+  .flex {
+    flex-direction: column;
+  }
+  .justify-center {
+    justify-content: flex-start;
+  }
+  .justify-between {
+    justify-content: space-around;
+  }
+  .justify-start {
+    justify-content: flex-start;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .items-center {
+    align-items: flex-start;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .gap-1 {
+    gap: 5px;
+  }
+  .gap-2 {
+    gap: 10px;
+  }
+  .gap-3 {
+    gap: 15px;
+  }
+  .gap-4 {
+    gap: 20px;
+  }
+  .gap-5 {
+    gap: 25px;
+  }
+  .p-5 {
+    padding: 25px;
+  }
+  .p-4 {
+    padding: 20px;
+  }
+  .p-3 {
+    padding: 15px;
+  }
+  .p-2 {
+    padding: 10px;
+  }
+  .p-1 {
+    padding: 5px;
+  }
+  .mt-1 {
+    margin-top: 5px;
+  }
+  .mt-2 {
+    margin-top: 10px;
+  }
+}

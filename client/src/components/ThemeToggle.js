@@ -9,6 +9,19 @@ function ThemeToggle() {
     setCurrentTheme(newTheme);
   };
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const newTheme = localStorage.getItem('theme-preference') || 'light';
+      setCurrentTheme(newTheme);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
   return (
     <div 
       className="theme-toggle" 

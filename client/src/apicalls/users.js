@@ -139,3 +139,38 @@ export const resetPassword = async (email, newPassword) => {
         return error.response.data;
     }
 }
+
+// Enhanced error handling for API calls
+axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response) {
+            const { status, data } = error.response;
+            switch (status) {
+                case 400:
+                    error.message = data.message || "Bad Request. Please check your input.";
+                    break;
+                case 401:
+                    error.message = data.message || "Unauthorized. Please log in again.";
+                    break;
+                case 403:
+                    error.message = data.message || "Forbidden. You do not have access to this resource.";
+                    break;
+                case 404:
+                    error.message = data.message || "Resource not found.";
+                    break;
+                case 500:
+                    error.message = data.message || "Internal Server Error. Please try again later.";
+                    break;
+                default:
+                    error.message = data.message || "An unexpected error occurred. Please try again.";
+            }
+        } else if (error.request) {
+            error.message = "No response received from the server. Please check your network connection.";
+        } else {
+            error.message = error.message || "An unexpected error occurred. Please try again.";
+        }
+
+        return Promise.reject(error);
+    }
+);
