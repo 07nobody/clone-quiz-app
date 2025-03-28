@@ -1,0 +1,55 @@
+:root {
+  /* Base theme colors (light mode default) */
+  --primary: #0F3460;
+  --secondary: #ff5722;
+  --success: #6fbf71;
+  --info: #00bcd4;
+  --warning: #e47943;
+  --danger: #f44336;
+  --light: #f1f1f1;
+  --dark: #212121;
+  
+  /* Theme-specific variables */
+  --background: #ffffff;
+  --card: #ffffff;
+  --text: #212121;
+  --border: #e1e1e1;
+  --shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Transition for smooth theme changes */
+  transition: all 0.3s ease-in-out;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-white {
+  background-color: var(--card) !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.bg-success {
+  background-color: var(--success);
+}
+
+.bg-error {
+  background-color: var(--warning);
+}
+
+/* Applied automatically by theme.js */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smoother transitions when switching themes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

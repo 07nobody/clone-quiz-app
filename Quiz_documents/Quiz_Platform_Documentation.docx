@@ -1,0 +1,322 @@
+# Quiz Platform Documentation (Extended)
+
+## Table of Contents
+1. Introduction
+2. Features
+3. Technology Stack
+4. System Architecture
+5. Diagrams
+   - Data Flow Diagram (DFD)
+   - Entity-Relationship Diagram (ERD)
+   - UML Diagrams
+6. Database Design
+7. API Documentation
+8. Security
+9. User Interface
+10. Testing
+11. Deployment
+12. Conclusion
+13. Detailed Workflows
+14. Advanced Features
+15. Additional Diagrams
+16. Code Snippets
+17. Future Enhancements
+18. Glossary
+19. References
+20. Appendix
+
+## 1. Introduction
+The Quiz Platform is a comprehensive web-based application designed to facilitate online quizzes. It caters to both administrators and users, providing tools for quiz creation, management, and participation. The platform is built with modern web technologies, ensuring scalability, security, and a user-friendly experience.
+
+### Purpose
+The primary goal of the Quiz Platform is to streamline the process of conducting quizzes online. It is suitable for educational institutions, corporate training, and individual use.
+
+### Target Audience
+- **Administrators**: Manage quizzes, questions, and view reports.
+- **Users**: Participate in quizzes and view results.
+
+### Key Objectives
+- Simplify quiz management for administrators.
+- Provide an engaging and intuitive interface for users.
+- Ensure data security and integrity.
+- Support scalability for a growing user base.
+
+## 2. Features
+### User Authentication
+- Secure login and registration.
+- Password reset functionality.
+
+### Role-based Access
+- Admin and User roles with distinct functionalities.
+
+### Exam Management
+- Create, edit, and delete exams and questions.
+- Support for multiple-choice questions.
+
+### Reporting
+- Detailed reports for administrators.
+- Performance analysis for users.
+
+### Responsive Design
+- Optimized for desktops, tablets, and mobile devices.
+
+### Additional Features
+- Real-time updates for exam results.
+- Customizable themes for user interface.
+
+## 3. Technology Stack
+### Frontend
+- **React.js**: For building the user interface.
+- **Redux**: For state management.
+- **CSS Modules**: For styling.
+
+### Backend
+- **Node.js**: For server-side logic.
+- **Express.js**: For building RESTful APIs.
+
+### Database
+- **MongoDB**: For storing data.
+
+### Tools
+- **Git**: For version control.
+- **Postman**: For API testing.
+- **Jest**: For unit testing.
+
+## 4. System Architecture
+The platform follows a client-server architecture:
+- **Client**: Handles user interactions and communicates with the server via REST APIs.
+- **Server**: Processes requests, manages business logic, and interacts with the database.
+
+### Data Flow
+1. User sends a request from the client.
+2. Server processes the request and interacts with the database if needed.
+3. Server sends a response back to the client.
+
+### Component Interaction
+- **Frontend**: React components interact with Redux for state management.
+- **Backend**: Express routes handle API requests and interact with MongoDB.
+
+## 5. Diagrams
+### Data Flow Diagram (DFD)
+#### Level 0
+- User interacts with the system to perform actions like login, take quizzes, and view reports.
+
+#### Level 1
+- Admin manages exams and questions, while users participate in quizzes.
+
+### Entity-Relationship Diagram (ERD)
+#### Entities
+- Users, Exams, Questions, Reports.
+
+#### Relationships
+- Users can take multiple exams.
+- Exams contain multiple questions.
+
+### UML Diagrams
+#### Use Case Diagram
+- Illustrates interactions between users and the system.
+
+#### Class Diagram
+- Represents the structure of the application.
+
+#### Sequence Diagram
+- Shows the sequence of interactions between components.
+
+#### Activity Diagram
+- Represents workflows within the system.
+
+## 6. Database Design
+### Schema
+#### User Table
+| Field         | Type    | Description          |
+|---------------|---------|----------------------|
+| UserID        | String  | Unique identifier    |
+| Name          | String  | User's full name     |
+| Email         | String  | User's email address |
+| Role          | String  | Admin or User        |
+
+#### Exam Table
+| Field         | Type    | Description          |
+|---------------|---------|----------------------|
+| ExamID        | String  | Unique identifier    |
+| Title         | String  | Exam title           |
+| Description   | String  | Exam details         |
+
+#### Question Table
+| Field         | Type    | Description          |
+|---------------|---------|----------------------|
+| QuestionID    | String  | Unique identifier    |
+| ExamID        | String  | Associated Exam ID   |
+| Text          | String  | Question text        |
+| Options       | Array   | Multiple choices     |
+| Answer        | String  | Correct answer       |
+
+## 7. API Documentation
+### User Endpoints
+- `POST /api/users/login`: User login.
+- `POST /api/users/register`: User registration.
+- `GET /api/users/profile`: Fetch user profile.
+
+### Exam Endpoints
+- `GET /api/exams`: Fetch all exams.
+- `POST /api/exams`: Create a new exam.
+- `PUT /api/exams/:id`: Update an exam.
+- `DELETE /api/exams/:id`: Delete an exam.
+
+### Report Endpoints
+- `GET /api/reports`: Fetch all reports.
+- `POST /api/reports`: Generate a new report.
+
+## 8. Security
+- **CSRF Protection**: Ensures secure API requests.
+- **Token-based Authentication**: Access and Refresh Tokens.
+- **Request Deduplication**: Prevents duplicate API calls.
+
+## 9. User Interface
+### Screenshots
+- Login Page
+- Admin Dashboard
+- User Dashboard
+
+### Descriptions
+- **Login and Registration**: For user authentication.
+- **Admin Dashboard**: Manage exams, questions, and view reports.
+- **User Dashboard**: Take quizzes and view results.
+
+## 10. Testing
+### Unit Testing
+- Focus on individual components and functions.
+
+### Integration Testing
+- Test interactions between components.
+
+### End-to-End Testing
+- Simulate user workflows.
+
+## 11. Deployment
+### Steps
+1. Set up the server environment.
+2. Deploy the frontend and backend.
+3. Configure the database.
+
+## 12. Conclusion
+The Quiz Platform is a robust and scalable solution for online quizzes, offering a secure and user-friendly experience. It is designed to meet the needs of both administrators and users, ensuring efficient quiz management and participation.
+
+## 13. Detailed Workflows
+### User Registration Workflow
+1. User navigates to the registration page.
+2. Fills in the required details (name, email, password).
+3. Submits the form.
+4. Backend validates the data and creates a new user record in the database.
+5. A confirmation email is sent to the user.
+6. User can now log in using their credentials.
+
+### Quiz Creation Workflow (Admin)
+1. Admin logs in and navigates to the "Create Quiz" section.
+2. Fills in quiz details (title, description, duration).
+3. Adds questions with multiple-choice options and correct answers.
+4. Saves the quiz, which is stored in the database.
+5. Quiz becomes available for users to attempt.
+
+### Quiz Attempt Workflow (User)
+1. User logs in and selects a quiz from the dashboard.
+2. Reads the instructions and starts the quiz.
+3. Answers each question within the time limit.
+4. Submits the quiz.
+5. Backend evaluates the answers and generates a score.
+6. User can view their results and detailed performance analysis.
+
+## 14. Advanced Features
+### Real-time Notifications
+- Users receive notifications for upcoming quizzes and results.
+- Admins are notified of user activity and reports.
+
+### Analytics Dashboard
+- Provides insights into user performance and quiz statistics.
+- Visualizations include bar charts, pie charts, and line graphs.
+
+### Multi-language Support
+- Users can select their preferred language for the interface.
+- Supports English, Spanish, French, and more.
+
+## 15. Additional Diagrams
+### Sequence Diagram for User Login
+- Depicts the interaction between the user, frontend, backend, and database during the login process.
+
+### Activity Diagram for Quiz Attempt
+- Illustrates the steps a user takes to complete a quiz.
+
+### Deployment Diagram
+- Shows the distribution of components across servers and devices.
+
+## 16. Code Snippets
+### Example: User Authentication API
+```javascript
+// User login endpoint
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (user && bcrypt.compareSync(password, user.password)) {
+    const token = generateToken(user._id);
+    res.json({ token });
+  } else {
+    res.status(401).json({ message: 'Invalid credentials' });
+  }
+});
+```
+
+### Example: Quiz Evaluation Logic
+```javascript
+// Evaluate quiz answers
+function evaluateQuiz(userAnswers, correctAnswers) {
+  let score = 0;
+  userAnswers.forEach((answer, index) => {
+    if (answer === correctAnswers[index]) {
+      score++;
+    }
+  });
+  return score;
+}
+```
+
+## 17. Future Enhancements
+### Gamification
+- Introduce badges and leaderboards to motivate users.
+
+### AI-Powered Question Generation
+- Use machine learning to generate and evaluate questions.
+
+### Offline Mode
+- Allow users to download quizzes and attempt them offline.
+
+## 18. Glossary
+- **API**: Application Programming Interface.
+- **CRUD**: Create, Read, Update, Delete.
+- **DFD**: Data Flow Diagram.
+- **ERD**: Entity-Relationship Diagram.
+- **UML**: Unified Modeling Language.
+
+## 19. References
+- React.js Documentation: [https://reactjs.org/](https://reactjs.org/)
+- Node.js Documentation: [https://nodejs.org/](https://nodejs.org/)
+- MongoDB Documentation: [https://www.mongodb.com/](https://www.mongodb.com/)
+
+## 20. Appendix
+### Sample Data
+#### User Table
+| UserID | Name       | Email           | Role  |
+|--------|------------|-----------------|-------|
+| 1      | John Doe   | john@example.com| User  |
+| 2      | Admin User | admin@example.com| Admin |
+
+#### Exam Table
+| ExamID | Title       | Description       |
+|--------|-------------|-------------------|
+| 101    | Math Quiz   | Basic math skills |
+| 102    | Science Quiz| General science   |
+
+#### Question Table
+| QuestionID | ExamID | Text                | Options                  | Answer |
+|------------|--------|---------------------|--------------------------|--------|
+| 1001       | 101    | What is 2+2?       | [2, 3, 4, 5]             | 4      |
+| 1002       | 102    | What is H2O?       | [Water, Oxygen, Hydrogen]| Water  |

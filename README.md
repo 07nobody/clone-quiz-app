@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Quiz-Application
+Quiz-Application Using MERN Stack Technology: In this project there are two portals one for admin and one for user <br><b>Admin:</b> admin can create quiz , add question to the quiz , modify the quiz , modify the answers or questions and can view reports of all users <br><b>User:</b> user can login and attempt the quiz and view the result and find the answers of all the question  quiz completion
+##How to run this 
+#
+## Installation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+# Make sure you have your own url for mongodb cluster add it in the .env file to store data in your databases for Ex-
+mongodb+srv://<Name>:<Password>@cluster0.mongodb.net/
 
-## Available Scripts
+# Install dependencies for server in the root directory
+npm install
+# and run the server
+npm start
 
-In the project directory, you can run:
+# open the another terminal and go to the client directory and install the dependencies for client
+cd ./client/
+npm install
+# after installation run the client
+npm start
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Server runs on  http://localhost:3000
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<i><h2>1) Registration Page</h2></i>
+<img src="./images/register.png"/>
+<i><h2>2) Login Page</h2></i>
+<img src="./images/login.png"/>
+<i><h2>3) Admin Profile Home Page</h2></i>
+<img src="./images/admin_homepage.png"/>
+<i><h2>4) Add Quiz Page in which Admin Post the Quiz into the MongoDB Database</h2></i>
+<img src="./images/admin_add_exam.png"/>
+<i><h2>5) Add Questions in Quiz </h2></i>
+<img src="./images/admin_add_ques.png"/>
+<i><h2>6) Edit Exam by Admin </h2></i>
+<img src="./images/admin_edit_exam.png"/>
+<i><h2>7) Edit Que by Admin </h2></i>
+<img src="./images/admin_edit_que.png"/>
+<i><h2>8) User's Profile </h2></i>
+<img src="./images/user_home.png"/>
+<i><h2>9) Instructions before exam </h2></i>
+<img src="./images/User_instruction.png"/>
 
-### `npm test`
+<i><h2>10) User Result</h2></i>
+<img src="./images/user_result.png"/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<i><h2>11) Reports of all users that can be seen by only admin </h2></i>
+<img src="./images/admin_report.png"/>
+<i><h2>12) User can see only his/her report </h2></i>
+<img src="./images/user_report.png"/>

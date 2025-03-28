@@ -1,0 +1,112 @@
+.layout {
+  padding: 15px;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  background-color: var(--primary);
+  padding: 10px;
+  border-radius: 5px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 30px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  gap: 15px;
+  color: white !important;
+  white-space: nowrap;
+}
+
+.active-menu-item{
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.header {
+  background-color: var(--primary);
+  color: white !important;
+  width: 100% !important;
+  padding: 15px;
+  border-radius: 5px;
+  align-items: center !important;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .layout {
+    padding: 10px;
+  }
+  
+  .sidebar {
+    padding: 5px;
+  }
+  
+  .menu-item {
+    padding: 8px 15px;
+    gap: 10px;
+  }
+  
+  .menu-item span {
+    display: none;
+  }
+
+  /* Show text on active menu item */
+  .active-menu-item span {
+    display: inline;
+  }
+  
+  /* Adjust quiz card layout for mobile */
+  .flex.gap-5.flex-wrap {
+    gap: 10px !important;
+    justify-content: center;
+  }
+  
+  /* Make cards full width on mobile */
+  .card.p-2 {
+    width: 100% !important;
+  }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 480px) {
+  .layout {
+    padding: 5px;
+  }
+
+  .sidebar {
+    padding: 3px;
+  }
+  
+  .menu-item {
+    padding: 6px 10px;
+    margin: 3px;
+    font-size: 0.9em;
+  }
+  
+  /* Compact layout for very small screens */
+  .w-400 {
+    width: 95% !important;
+    max-width: 400px;
+  }
+  
+  /* Fix form elements for small screens */
+  input, select, button {
+    padding: 8px 15px !important;
+  }
+}
