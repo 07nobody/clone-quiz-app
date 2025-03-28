@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss');
 const { rateLimit } = require("express-rate-limit");
+const cache = require('memory-cache'); // Server-side caching
 
 // XSS prevention middleware
 const xssMiddleware = (req, res, next) => {
@@ -111,6 +112,25 @@ app.use((req, res, next) => {
   next();
 });
 
+// Server-side caching middleware
+const cacheMiddleware = (duration) => {
+  return (req, res, next) => {
+    const key = '__express__' + req.originalUrl || req.url;
+    const cachedResponse = cache.get(key);
+    if (cachedResponse) {
+      res.send(cachedResponse);
+      return;
+    } else {
+      res.sendResponse = res.send;
+      res.send = (body) => {
+        cache.put(key, body, duration * 1000);
+        res.sendResponse(body);
+      };
+      next();
+    }
+  };
+};
+
 // Import and use routes
 const dbConfig = require("./config/dbConfig");
 const usersRoute = require("./routes/usersRoute");
@@ -118,7 +138,7 @@ const examsRoute = require("./routes/examsRoute");
 const reportsRoute = require("./routes/reportsRoute");
 
 app.use("/api/users", usersRoute);
-app.use("/api/exams", examsRoute);
+app.use("/api/exams", cacheMiddleware(30), examsRoute); // Cache exams route for 30 seconds
 app.use("/api/reports", reportsRoute);
 
 // Serve static files in production

@@ -3,6 +3,8 @@ import { Modal, Form, message, Input, InputNumber, Select } from "antd";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../../redux/loaderSlice";
 import { addQuestionToExam, editQuestionById } from "../../../apicalls/exams";
+import "../../../stylesheets/form-elements.css";
+import "../../../stylesheets/grid.css";
 
 const { TextArea } = Input;
 const { Option } = Select;

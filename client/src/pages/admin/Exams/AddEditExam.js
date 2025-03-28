@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PageTitle from "../../../components/PageTitle";
 import { useNavigate, useParams } from "react-router-dom";
-import { message, Table, Form, Input, InputNumber, DatePicker, Switch } from "antd";
+import { message, Table, Form, Input, InputNumber, DatePicker, Switch, Tabs } from "antd";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../../../redux/loaderSlice";
 import { addExam, updateExam, deleteQuestionById, getExamById } from "../../../apicalls/exams";
 import moment from "moment";
 import AddEditQuestion from "./AddEditQuestion";
+import "../../../stylesheets/form-elements.css";
+import "../../../stylesheets/grid.css";
 
 function AddEditExam() {
   const dispatch = useDispatch();

@@ -104,3 +104,31 @@ export const deleteQuestionById = async (payload) => {
     return error.response.data;
   }
 }
+
+// Optimize API endpoints
+export const optimizedGetAllExams = async () => {
+  try {
+    if (!localStorage.getItem('accessToken')) {
+      return { success: false, message: "Not authenticated" };
+    }
+
+    const response = await axiosInstance.post("/api/exams/get-all-exams", {});
+    return response.data;
+  } catch (error) {
+    console.error("Error getting exams:", error);
+    return error.response ? error.response.data : { success: false, message: "Network error" };
+  }
+};
+
+// Implement request deduplication
+export const dedupGetExamById = async (payload) => {
+  try {
+    const response = await axiosInstance.post(
+      "/api/exams/get-exam-by-id",
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
