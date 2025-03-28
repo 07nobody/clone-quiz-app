@@ -3,26 +3,20 @@ Quiz-Application Using MERN Stack Technology: In this project there are two port
 ##How to run this 
 #
 ## Installation
-
 ```bash
 # Make sure you have your own url for mongodb cluster add it in the .env file to store data in your databases for Ex-
 mongodb+srv://<Name>:<Password>@cluster0.mongodb.net/
-
 # Install dependencies for server in the root directory
 npm install
 # and run the server
 npm start
-
 # open the another terminal and go to the client directory and install the dependencies for client
 cd ./client/
 npm install
 # after installation run the client
 npm start
-
-
 # Server runs on  http://localhost:3000
 ```
-
 <i><h2>1) Registration Page</h2></i>
 <img src="./images/register.png"/>
 <i><h2>2) Login Page</h2></i>
@@ -41,10 +35,8 @@ npm start
 <img src="./images/user_home.png"/>
 <i><h2>9) Instructions before exam </h2></i>
 <img src="./images/User_instruction.png"/>
-
 <i><h2>10) User Result</h2></i>
 <img src="./images/user_result.png"/>
-
 <i><h2>11) Reports of all users that can be seen by only admin </h2></i>
 <img src="./images/admin_report.png"/>
 <i><h2>12) User can see only his/her report </h2></i>
